@@ -147,7 +147,6 @@ struct CircularInt{
 
 		if(s.length()==0){
 			throw string("There is no number x in {1,12} such that x*"+to_string(num)+"=10");
-			exit(1);
 		}
 		return s;
 	}
