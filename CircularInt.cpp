@@ -28,19 +28,27 @@ CircularInt::CircularInt(const CircularInt& h)
 
 
 CircularInt& CircularInt::operator/=(const int num){
-	this->now = this->now / num;
-	if(this->now < min)
-	{
-		this->now = this->now % max + max;
-	}
+	now = now / num;
+	while(now > max)
+		{
+			now-=max;
+		}
+		while(now < min)
+		{
+			now+=max;
+		}
 	return *this;
 }
 CircularInt& CircularInt::operator/=(const CircularInt& h){
-	this->now = this->now / h.now;
-	if(this->now < min)
-	{
-		this->now = this->now % max + max;
-	}
+	now = now / h.now;
+	while(now > max)
+		{
+			now-=max;
+		}
+		while(now < min)
+		{
+			now+=max;
+		}
 	return *this;
 }
 
