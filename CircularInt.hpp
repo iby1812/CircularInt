@@ -255,10 +255,10 @@ inline CircularInt operator+=(const CircularInt& h, const int num){
 	return temp;
 }
 inline CircularInt operator+=(const int num, const CircularInt& h){
-	return h += num;
+	return operator+=(h , num);
 }
 inline CircularInt operator+=(const CircularInt& a, const CircularInt& b){
-	return a += b.now;
+	return operator+=(a , b.now);
 }
 
 
