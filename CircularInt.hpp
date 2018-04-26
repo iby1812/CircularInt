@@ -37,7 +37,7 @@ class CircularInt{
 		CircularInt& operator=(const int);
 		CircularInt& operator=(const CircularInt& h);
 		
-		vector<int> operator/(int num);
+		vector<int> operator/(const int num);
 		vector<int> operator/(const CircularInt& h);
 
 
