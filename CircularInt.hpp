@@ -97,17 +97,15 @@ inline ostream& operator<<(ostream& os, const CircularInt &m) {
 }
 
 inline istream& operator>>(istream& os,  CircularInt &m) {
-	int n,mi,ma;
-	os >> n>>mi>>ma;
-	if(mi>ma){
-		m.max=mi;
-		m.min=ma;
-	}
-	else{
-		m.max=ma;
-		m.min=mi;
-	}
+	int n;
+	os >> n;
 	m.now = n;
+	if(m.now>m.max){
+		m.now=m.now%m.max;
+	}
+	while(m.now<m.min){
+		m.now+=m.max;
+	}
 	return os;
 }
 inline ostream &operator<<(ostream &os, vector<int> vec) {
