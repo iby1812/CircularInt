@@ -20,6 +20,7 @@ class CircularInt{
 		CircularInt& operator-=(const int);
 		CircularInt& operator*=(const int);
 		CircularInt& operator/=(const int);
+		CircularInt& operator*=(const CircularInt& h);
 
 		CircularInt operator--(int);
 		CircularInt& operator--();
