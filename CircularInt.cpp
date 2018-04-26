@@ -147,12 +147,26 @@ CircularInt& CircularInt::operator++(){
 
 CircularInt& CircularInt::operator=(const int num){
 
-	this->now = num;
+	now = num;
+	if(now > max)
+		{
+			now =now % max;
+		}
+	while(now<min){
+			now+=max;
+		}
 	return *this;
 }
 
 CircularInt& CircularInt::operator=(const CircularInt& h){
-	this->now = h.now;
+	now = h.now;
+	if(now > max)
+			{
+				now =now % max;
+			}
+		while(now<min){
+				now+=max;
+			}
 	return *this;
 
 }
