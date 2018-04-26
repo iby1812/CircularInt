@@ -137,10 +137,10 @@ CircularInt CircularInt::operator++(int){
 }
 
 CircularInt& CircularInt::operator++(){
-	this->now++;
-	if(this->now > 12)
+	now++;
+	if(now > max)
 	{
-		this->now = this->now % max;
+		now = now % max;
 	}
 	return *this;
 }
