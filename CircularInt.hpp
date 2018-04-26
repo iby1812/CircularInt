@@ -251,7 +251,7 @@ inline int operator>=(const CircularInt& a, const CircularInt& b){
 
 inline CircularInt operator+=(const CircularInt& h, const int num){
 	CircularInt temp(h);
-	temp.now += num;
+	temp += num;
 	return temp;
 }
 inline CircularInt operator+=(const int num, const CircularInt& h){
