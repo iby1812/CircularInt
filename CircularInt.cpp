@@ -93,7 +93,14 @@ CircularInt& CircularInt::operator+=(const int num) {
 	}
 	return *this;
 }
-
+CircularInt& CircularInt::operator+=(const CircularInt& h) {
+	this->now = this->now+h.now;
+	if(this->now > max)
+	{
+		this->now = this->now % max;
+	}
+	return *this;
+}
 CircularInt CircularInt::operator--(int){
 	CircularInt temp(*this);
 	operator--();
@@ -179,12 +186,10 @@ vector<int> CircularInt::operator/(int num){
 			vec.push_back(i);
 		}
 	}
-
 	if(vec.size() == 0)
 	{
 		throw string("There is no number x in {1,12} such that x*"+to_string(num)+"=10");
 	}
-
 	return vec;
 }
 
