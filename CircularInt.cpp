@@ -133,7 +133,7 @@ CircularInt& CircularInt::operator--(){
 CircularInt CircularInt::operator++(int){
 	CircularInt temp(*this);
 	operator++();
-	return *this;
+	return temp;
 }
 
 CircularInt& CircularInt::operator++(){
