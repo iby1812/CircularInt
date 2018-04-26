@@ -20,12 +20,13 @@ class CircularInt{
 		CircularInt& operator+=(const CircularInt& h);
 
 		CircularInt& operator-=(const int);
+		CircularInt& operator-=(const CircularInt& h);
 
 		CircularInt& operator*=(const int);
 		CircularInt& operator*=(const CircularInt& h);
 
 		CircularInt& operator/=(const int);
-
+		CircularInt& operator/=(const CircularInt& h);
 
 		CircularInt operator--(int);
 		CircularInt& operator--();
@@ -37,7 +38,7 @@ class CircularInt{
 		CircularInt& operator=(const CircularInt& h);
 		
 		vector<int> operator/(int num);
-
+		vector<int> operator/(const CircularInt& h);
 
 
 		friend int operator>=(const CircularInt& h, int num);
