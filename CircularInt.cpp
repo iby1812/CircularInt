@@ -149,7 +149,21 @@ CircularInt& CircularInt::operator*=(const int num){
 	}
 	return *this;
 }
+CircularInt& CircularInt::operator*=(const CircularInt& h){
+	this->now*=h.now;
 
+	if(this->now > max)
+	{
+		this->now = this->now % max;
+	}
+	else {
+		while(this->now < min)
+		{
+			this->now+=max;
+		}
+	}
+	return *this;
+}
 vector<int> CircularInt::operator/(int num){
 
 	vector<int> vec;
