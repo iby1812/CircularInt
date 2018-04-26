@@ -57,6 +57,14 @@ CircularInt& CircularInt::operator/=(const int num){
 	}
 	return *this;
 }
+CircularInt& CircularInt::operator/=(const CircularInt& h){
+	this->now = this->now / h.now;
+	if(this->now < min)
+	{
+		this->now = this->now % max + max;
+	}
+	return *this;
+}
 
 CircularInt& CircularInt::operator-=(const int num){
 	this->now = this->now - num;
@@ -67,6 +75,14 @@ CircularInt& CircularInt::operator-=(const int num){
 	return *this;
 }
 
+CircularInt& CircularInt::operator-=(const CircularInt& h){
+	this->now = this->now - h.now;
+	if(this->now < min)
+	{
+		this->now = this->now % max + max;
+	}
+	return *this;
+}
 /*CircularInt CircularInt::operator-(int num) {
 		CircularInt hour{min,max};
 		hour.now=num-now;
@@ -189,6 +205,28 @@ vector<int> CircularInt::operator/(int num){
 	if(vec.size() == 0)
 	{
 		throw string("There is no number x in {1,12} such that x*"+to_string(num)+"=10");
+	}
+	return vec;
+}
+
+vector<int> CircularInt::operator/(const CircularInt& h){
+
+	vector<int> vec;
+	for(int i = min; i <= max; i++)
+	{
+		int temp = i*h.now;
+		if(temp > max)
+		{
+			temp = temp % max;
+		}
+		if(temp == now)
+		{
+			vec.push_back(i);
+		}
+	}
+	if(vec.size() == 0)
+	{
+		throw string("There is no number x in {1,12} such that x*"+to_string(h.now)+"=10");
 	}
 	return vec;
 }
