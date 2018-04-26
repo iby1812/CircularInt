@@ -27,28 +27,6 @@ CircularInt::CircularInt(const CircularInt& h)
 }
 
 
-
-
-/*CircularInt CircularInt::operator+(const CircularInt& h)
-	{
-		CircularInt hour{min,max};
-		hour.now = this->now + h.now;
-
-		if(hour.now > max)
-		{
-			hour.now = hour.now % max;
-		}
-		return hour;
-	}
-
-	CircularInt CircularInt::operator+(int num) {
-		CircularInt hour{min,max};
-		hour.now=now+num;
-		while(hour.now>max){
-			hour.now=hour.now-max;
-		}
-		return hour;
-	}*/
 CircularInt& CircularInt::operator/=(const int num){
 	this->now = this->now / num;
 	if(this->now < min)
@@ -83,23 +61,6 @@ CircularInt& CircularInt::operator-=(const CircularInt& h){
 	}
 	return *this;
 }
-/*CircularInt CircularInt::operator-(int num) {
-		CircularInt hour{min,max};
-		hour.now=num-now;
-		while(hour.now<min){
-			hour.now=hour.now+max;
-		}
-		return hour;
-	}*/
-
-/*CircularInt CircularInt::operator-() {
-		CircularInt hour{min,max};
-		hour.now=max-now;
-		while(hour.now<min){
-			hour.now=hour.now+max;
-		}
-		return hour;
-	}*/
 
 CircularInt& CircularInt::operator+=(const int num) {
 	this->now = this->now+num;
@@ -140,7 +101,7 @@ CircularInt& CircularInt::operator++(){
 	now++;
 	if(now > max)
 	{
-		now = now % max;
+		now =now % max;
 	}
 	return *this;
 }
@@ -149,56 +110,56 @@ CircularInt& CircularInt::operator=(const int num){
 
 	now = num;
 	if(now > max)
-		{
-			now =now % max;
-		}
+	{
+		now =now % max;
+	}
 	while(now<min){
-			now+=max;
-		}
+		now+=max;
+	}
 	return *this;
 }
 
 CircularInt& CircularInt::operator=(const CircularInt& h){
 	now = h.now;
 	if(now > max)
-			{
-				now =now % max;
-			}
-		while(now<min){
-				now+=max;
-			}
+	{
+		now =now % max;
+	}
+	while(now<min){
+		now+=max;
+	}
 	return *this;
 
 }
 
 CircularInt& CircularInt::operator*=(const int num){
-	this->now*=num;
+	now*=num;
 
-	if(this->now > max)
+	if(now > max)
 	{
-		this->now = this->now % max;
+		now = now % max;
 	}
-	else {
-		while(this->now < min)
-		{
-			this->now+=max;
-		}
+
+	while(now < min)
+	{
+		now+=max;
 	}
+
 	return *this;
 }
 CircularInt& CircularInt::operator*=(const CircularInt& h){
-	this->now*=h.now;
+	now*=h.now;
 
-	if(this->now > max)
+	if(now > max)
 	{
-		this->now = this->now % max;
+		now = now % max;
 	}
-	else {
-		while(this->now < min)
-		{
-			this->now+=max;
-		}
+
+	while(now < min)
+	{
+		now+=max;
 	}
+
 	return *this;
 }
 vector<int> CircularInt::operator/(const int num){
@@ -240,10 +201,10 @@ vector<int> CircularInt::operator/(const CircularInt& h){
 			temp = temp % max;
 		}
 		if(temp<min){
-					while(temp<min){
-						temp+=max;
-					}
-				}
+			while(temp<min){
+				temp+=max;
+			}
+		}
 		if(temp == now)
 		{
 			vec.push_back(i);
@@ -251,19 +212,9 @@ vector<int> CircularInt::operator/(const CircularInt& h){
 	}
 	if(vec.size() == 0)
 	{
-		throw string("There is no number x in {1 , 12} such that x*" + to_string(h.now)+"=10");
+		throw string("There is no number x in {1 , 12} such that x*" + to_string(h.now)+"=+10");
 	}
 	return vec;
 }
 
-/*CircularInt operator-(int num,const CircularInt & h) {
-	CircularInt temp{h.min,h.max};
-	temp.now=num-h.now;
-
-	if(temp.now < temp.min)
-	{
-		temp.now = temp.now % temp.max + temp.max;
-	}
-	return temp;
-	}*/
 
