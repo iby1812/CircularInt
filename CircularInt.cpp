@@ -30,25 +30,25 @@ CircularInt::CircularInt(const CircularInt& h)
 CircularInt& CircularInt::operator/=(const int num){
 	now = now / num;
 	while(now > max)
-		{
-			now-=max;
-		}
-		while(now < min)
-		{
-			now+=max;
-		}
+	{
+		now-=max;
+	}
+	while(now < min)
+	{
+		now+=max;
+	}
 	return *this;
 }
 CircularInt& CircularInt::operator/=(const CircularInt& h){
 	now = now / h.now;
 	while(now > max)
-		{
-			now-=max;
-		}
-		while(now < min)
-		{
-			now+=max;
-		}
+	{
+		now-=max;
+	}
+	while(now < min)
+	{
+		now+=max;
+	}
 	return *this;
 }
 
@@ -175,15 +175,14 @@ vector<int> CircularInt::operator/(const int num){
 	for(int i = min; i <= max; i++)
 	{
 		int temp = i*num;
-		if(temp > max)
-		{
-			temp = temp % max;
+		while(temp>min){
+			temp-=max;
 		}
-		if(temp<min){
-			while(temp<min){
-				temp+=max;
-			}
+
+		while(temp<min){
+			temp+=max;
 		}
+
 		if(temp == now)
 		{
 			vec.push_back(i);
@@ -202,15 +201,14 @@ vector<int> CircularInt::operator/(const CircularInt& h){
 	for(int i = min; i <= max; i++)
 	{
 		int temp = i*h.now;
-		if(temp > max)
-		{
-			temp = temp % max;
+		while(temp>min){
+			temp-=max;
 		}
-		if(temp<min){
-			while(temp<min){
-				temp+=max;
-			}
+
+		while(temp<min){
+			temp+=max;
 		}
+
 		if(temp == now)
 		{
 			vec.push_back(i);
