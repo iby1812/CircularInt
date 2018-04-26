@@ -97,12 +97,19 @@ inline ostream& operator<<(ostream& os, const CircularInt &m) {
 }
 
 inline istream& operator>>(istream& os,  CircularInt &m) {
-	int i;
-	os >> i;
-	m.now = i;
+	int n,mi,ma;
+	os >> n>>mi>>ma;
+	if(mi>ma){
+		m.max=mi;
+		m.min=ma;
+	}
+	else{
+		m.max=ma;
+		m.min=mi;
+	}
+	m.now = n;
 	return os;
 }
-
 inline ostream &operator<<(ostream &os, vector<int> vec) {
 	string result = "";
 	for(unsigned int i = 0; i < vec.size(); i++ )
