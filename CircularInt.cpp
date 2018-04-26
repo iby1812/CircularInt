@@ -191,7 +191,7 @@ vector<int> CircularInt::operator/(const int num){
 	}
 	if(vec.size() == 0)
 	{
-		throw string("There is no number x in {1 , 12} such that x*" + to_string(num)+"=10");
+		throw string("There is no number x in {"+to_string(min)+ ","+ to_string(max)+"} such that x*" + to_string(num)+"="+to_string(now));
 	}
 	return vec;
 }
@@ -218,7 +218,7 @@ vector<int> CircularInt::operator/(const CircularInt& h){
 	}
 	if(vec.size() == 0)
 	{
-		throw string("There is no number x in {1 , 12} such that x*" + to_string(h.now)+"=+10");
+		throw string("There is no number x in {"+to_string(min)+ ","+ to_string(max)+"} such that x*" + to_string(h.now)+"="+to_string(now));
 	}
 	return vec;
 }
