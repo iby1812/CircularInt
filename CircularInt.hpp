@@ -37,9 +37,9 @@ public:
 	CircularInt& operator=(const int);
 	CircularInt& operator=(const CircularInt& h);
 
-	friend vector<int> operator/(const CircularInt& h, int num);
-	friend vector<int> operator/(int num, const CircularInt& h);
-	friend vector<int> operator/(const CircularInt& a, const CircularInt& b);
+	friend CircularInt operator/(const CircularInt& h, int num);
+	friend CircularInt operator/(int num, const CircularInt& h);
+	friend CircularInt operator/(const CircularInt& a, const CircularInt& b);
 
 	friend int operator>=(const CircularInt& h, int num);
 	friend int operator>=(int num, const CircularInt& h);
@@ -192,7 +192,6 @@ inline CircularInt operator*(const int num, const CircularInt& h){
 inline CircularInt operator*(const CircularInt& a, const CircularInt& b){
 	return operator*(a , b.now);
 }
-
 inline int operator>(const CircularInt& h, int num){
 	if(h.now > num) return 1;
 	else return 0;
@@ -257,82 +256,88 @@ inline CircularInt operator-=(const CircularInt& a, const CircularInt& b){
 	return a -= b.now;
 }
 
-inline vector<int> operator/(const CircularInt& h, int num){
+inline CircularInt operator/(const CircularInt& h, int num){
 
 
-	vector<int> vec;
-	for(int i = h.min; i <= h.max; i++)
+	CircularInt a(h);
+	int count=0;
+	for(int i = a.min; i <= a.max; i++)
 	{
 		int temp = i*num;
-		while(temp>h.min){
-			temp-=h.max;
+		while(temp>a.min){
+			temp-=a.max;
 		}
 
-		while(temp<h.min){
-			temp+=h.max;
+		while(temp<a.min){
+			temp+=a.max;
 		}
 
-		if(temp == h.now)
+		if(temp == a.now)
 		{
-			vec.push_back(i);
+			count++;
+			a.now=i;
 		}
 	}
-	if(vec.size() == 0)
+	if(count == 0)
 	{
-		throw string("There is no number x in {"+to_string(h.min)+ ","+ to_string(h.max)+"} such that x*" + to_string(num)+"="+to_string(h.now));
+		throw string("There is no number x in {"+to_string(a.min)+ ","+ to_string(a.max)+"} such that x*" + to_string(num)+"="+to_string(h.now));
 	}
-	return vec;
+	return a;
 }
 
-inline vector<int> operator/(int num, const CircularInt& h){
+inline CircularInt operator/(int num,const CircularInt& h){
 
-	vector<int> vec;
-	for(int i = h.min; i <= h.max; i++)
+	CircularInt a(h);
+	int count=0;
+	for(int i = a.min; i <= a.max; i++)
 	{
 		int temp = i*num;
-		while(temp>h.min){
-			temp-=h.max;
+		while(temp>a.min){
+			temp-=a.max;
 		}
 
-		while(temp<h.min){
-			temp+=h.max;
+		while(temp<a.min){
+			temp+=a.max;
 		}
 
-		if(temp == h.now)
+		if(temp == a.now)
 		{
-			vec.push_back(i);
+			count++;
+			a.now=i;
 		}
 	}
-	if(vec.size() == 0)
+	if(count == 0)
 	{
-		throw string("There is no number x in {"+to_string(h.min)+ ","+ to_string(h.max)+"} such that x*" + to_string(num)+"="+to_string(h.now));
+		throw string("There is no number x in {"+to_string(a.min)+ ","+ to_string(a.max)+"} such that x*" + to_string(num)+"="+to_string(h.now));
 	}
-	return vec;
+	return a;
 }
-inline vector<int> operator/(const CircularInt& h, const CircularInt& b){
-	vector<int> vec;
-	for(int i = h.min; i <= h.max; i++)
+inline CircularInt operator/(const CircularInt& h, const CircularInt& b){
+
+	CircularInt a(h);
+	int count=0;
+	for(int i = a.min; i <= a.max; i++)
 	{
 		int temp = i*b.now;
-		while(temp>h.min){
-			temp-=h.max;
+		while(temp>a.min){
+			temp-=a.max;
 		}
 
-		while(temp<h.min){
-			temp+=h.max;
+		while(temp<a.min){
+			temp+=a.max;
 		}
 
-		if(temp == h.now)
+		if(temp == a.now)
 		{
-			vec.push_back(i);
+			count++;
+			a.now=i;
 		}
 	}
-	if(vec.size() == 0)
+	if(count == 0)
 	{
-		throw string("There is no number x in {"+to_string(h.min)+ ","+ to_string(h.max)+"} such that x*" + to_string(b.now)+"="+to_string(h.now));
+		throw string("There is no number x in {"+to_string(a.min)+ ","+ to_string(a.max)+"} such that x*" + to_string(b.now)+"="+to_string(h.now));
 	}
-	return vec;
+	return a;
 }
-
 
 
