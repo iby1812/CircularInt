@@ -291,7 +291,7 @@ inline CircularInt operator/(int num,const CircularInt& h){
 	int count=0;
 	for(int i = a.min; i <= a.max; i++)
 	{
-		int temp = i*num;
+		int temp = i*h.now;
 		while(temp>a.max){
 			temp-=a.max;
 		}
@@ -300,7 +300,7 @@ inline CircularInt operator/(int num,const CircularInt& h){
 			temp+=a.max;
 		}
 
-		if(temp == h.now)
+		if(temp == num)
 		{
 			count++;
 			a.now=i;
