@@ -272,7 +272,7 @@ inline CircularInt operator/(const CircularInt& h, int num){
 			temp+=a.max;
 		}
 
-		if(temp == a.now)
+		if(temp == h.now)
 		{
 			count++;
 			a.now=i;
@@ -300,7 +300,7 @@ inline CircularInt operator/(int num,const CircularInt& h){
 			temp+=a.max;
 		}
 
-		if(temp == a.now)
+		if(temp == h.now)
 		{
 			count++;
 			a.now=i;
@@ -327,7 +327,7 @@ inline CircularInt operator/(const CircularInt& h, const CircularInt& b){
 			temp+=a.max;
 		}
 
-		if(temp == a.now)
+		if(temp == h.now)
 		{
 			count++;
 			a.now=i;
