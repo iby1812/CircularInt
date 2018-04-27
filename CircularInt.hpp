@@ -333,6 +333,6 @@ inline vector<int> operator/(const CircularInt& h, const CircularInt& b){
 	}
 	return vec;
 }
-}
+
 
 
