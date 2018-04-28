@@ -183,17 +183,41 @@ inline CircularInt operator+(const CircularInt & a,const CircularInt & b){
 
 inline CircularInt operator*(const CircularInt& h, const int num){
 	CircularInt temp(h);
-	temp *= num;
+	temp.now = temp.now*num;
+	while(temp.now > temp.max)
+		{
+			temp.now-=temp.max;
+		}
+		while(temp.now < temp.min)
+		{
+			temp.now+=temp.max;
+		}
 	return temp;
 }
 inline CircularInt operator*(const int num, const CircularInt& h){
 	CircularInt temp(h);
-		temp *= num;
+		temp.now = temp.now*num;
+		while(temp.now > temp.max)
+			{
+				temp.now-=temp.max;
+			}
+			while(temp.now < temp.min)
+			{
+				temp.now+=temp.max;
+			}
 		return temp;
 }
 inline CircularInt operator*(const CircularInt& a, const CircularInt& b){
 	CircularInt temp(a);
-		temp *= b.now;
+		temp.now = temp.now*b.now;
+		while(temp.now > temp.max)
+			{
+				temp.now-=temp.max;
+			}
+			while(temp.now < temp.min)
+			{
+				temp.now+=temp.max;
+			}
 		return temp;
 }
 inline int operator>(const CircularInt& h, int num){
