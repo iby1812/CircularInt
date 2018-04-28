@@ -187,10 +187,14 @@ inline CircularInt operator*(const CircularInt& h, const int num){
 	return temp;
 }
 inline CircularInt operator*(const int num, const CircularInt& h){
-	return operator*(h , num);
+	CircularInt temp(h);
+		temp *= num;
+		return temp;
 }
 inline CircularInt operator*(const CircularInt& a, const CircularInt& b){
-	return operator*(a , b.now);
+	CircularInt temp(a);
+		temp *= b.now;
+		return temp;
 }
 inline int operator>(const CircularInt& h, int num){
 	if(h.now > num) return 1;
